@@ -1,0 +1,7 @@
+MIDlet-Version: 1.1.9
+MIDlet-Vendor: Asiabird Lyman
+MIDlet-Jar-URL: walkbook.jar
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-1: WalkBook,/image/book.png,asiabird.walkbook.WalkBook
+MicroEdition-Profile: MIDP-1.0
+MIDlet-Name: WalkBook
