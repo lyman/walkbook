@@ -1,0 +1,15 @@
+#labels Featured
+#新版本特性计划
+
+== walkbook新特性 ==
+  * 优化算法，使用缓存机制来减少walkbook对内存空间的消耗。
+  * 重新设计UI，新UI遵循KISS原则。
+  * 保留无需客户端的特性，不再限制单个jar包的文本数量。
+  * 增加PC客户端支持，降低轻量级用户使用walkbook的门槛。有关PC客户端的详细内容后文叙述。
+  * 精简代码，将更多空间留给文本。
+  * 发布MIDP 1.0，MIDP 1.0+NokiaUI，MIDP 2.0三种版本，覆盖尽可能多的机型。
+
+== walkbook-shell ==
+  * 支持windows平台
+  * 自动编码转换
+  * 通过walkbook-shell生成的walkbook可以使用中文书名
