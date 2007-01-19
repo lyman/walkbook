@@ -10,6 +10,7 @@
   * 发布MIDP 1.0，MIDP 1.0+NokiaUI，MIDP 2.0三种版本，覆盖尽可能多的机型。
 
 == walkbook-shell ==
-  * 支持windows平台
+  * 用于生成walkbook的windows平台客户端
+  * 免安装
   * 自动编码转换
   * 通过walkbook-shell生成的walkbook可以使用中文书名
