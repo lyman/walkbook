@@ -8,9 +8,11 @@
   * 增加PC客户端支持，降低轻量级用户使用walkbook的门槛。有关PC客户端的详细内容后文叙述。
   * 精简代码，将更多空间留给文本。
   * 发布MIDP 1.0，MIDP 1.0+NokiaUI，MIDP 2.0三种版本，覆盖尽可能多的机型。
+  * 每个电子文档单独的书签、阅览设置（颜色、行距等）
 
 == walkbook-shell ==
   * 用于生成walkbook的windows平台客户端
   * 免安装
   * 自动编码转换
   * 通过walkbook-shell生成的walkbook可以使用中文书名
+  * 自动去掉UTF-8文档头的big endian/little endian识别符
