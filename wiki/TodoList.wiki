@@ -9,6 +9,7 @@
   * 精简代码，将更多空间留给文本。
   * 发布MIDP 1.0，MIDP 1.0+NokiaUI，MIDP 2.0三种版本，覆盖尽可能多的机型。
   * 每个电子文档单独的书签、阅览设置（颜色、行距等）
+  * 同时支持UTF-8和GB2312解码
 
 == walkbook-shell ==
   * 用于生成walkbook的windows平台客户端
