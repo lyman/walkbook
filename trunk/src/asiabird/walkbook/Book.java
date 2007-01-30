@@ -1,5 +1,6 @@
 package asiabird.walkbook;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -12,8 +13,9 @@ public class Book {
 	private String charset;
 	
  	private Config config;
-	private Hashtable cache;
-	private Vector pilot;
+	private Cache cache;
+	private Vector pilot;		// 用于存放每行行首的char在文件中的位置
+	private boolean inited;
 	
 	private int bookmark;
 	private InputStream is;
@@ -40,7 +42,7 @@ public class Book {
 		lineNum = -1;
 		
 		// 准备cache和pilot
-		cache = new Hashtable(lineInScreen * 4);
+		cache = new Cache(lineInScreen);
 		pilot = new Vector(lineInScreen, lineInScreen);
 		// 打开资源文件
 		is = getClass().getResourceAsStream(resourceName);
@@ -52,12 +54,12 @@ public class Book {
 			isr = new InputStreamReader(is);
 			charset = System.getProperty("microedition.encoding");
 		}
-		// 先从RMS获得
+		// 读取RMS
 		// 获得lineNum
 		// 获得pilot
 		
 		// 否则开始排版
-		bookmark = 0;
+		inited = false;
 	}
 	
 	private boolean composing = false;
@@ -65,10 +67,40 @@ public class Book {
 	private class Composer implements Runnable {
 
 		public void run() {
-			if (lineNum < 0) {
-				// 扫描整个文件
-				
+			if (!inited) {
+				// 对整个文章进行排版
+				int c = 0;	// 当前字符
+				int cw = 0;	// 当前字符的宽度
+				int cc = 0;	// 已读取字符数
+				int sw = 0;
+				StringBuffer s = new StringBuffer();
+				try {
+					while ((c = isr.read()) != -1) {
+						cc++;
+						if (c == 13) {
+							// 忽略 0x0d 换行符
+							continue;
+						}
+						if (c == 10) {
+							// 只在 0x0a 时换行（DOS:0d0a; UNIX: 0a）
+							sw = 0;
+							lineNum++;
+							// TODO
+						}
+						cw = config.font.charWidth((char)c);
+						if (sw +  cw> width) {
+							sw = 0;
+							lineNum++;
+							// TODO
+						}
+						s.append((char)c);
+						sw += cw;
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			
 		}
 		
 	}
