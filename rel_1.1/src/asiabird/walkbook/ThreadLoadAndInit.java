@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 
+import javax.microedition.lcdui.Font;
+
 /**
  * @author Lyman
  *
@@ -58,9 +60,12 @@ public class ThreadLoadAndInit extends Thread {
 				Config.INSTANCE.application.systemCommand(Config.SYS_CMD_ENCODEERROR);
 			}
 			int c = 0;		// current char
+			int cw = 0;		// current char width
+			int sw = 0;		// current string width
 			StringBuffer s = new StringBuffer();
 			content = new Vector();
-
+			Font font = Config.INSTANCE.getFont();
+			
 			long ti = System.currentTimeMillis();	// 计时开始
 			while ((c = isr.read()) != -1) {
 				if (c == 13) {
@@ -72,9 +77,12 @@ public class ThreadLoadAndInit extends Thread {
 					content.addElement(s.toString());
 					Config.INSTANCE.application.systemCommand(Config.SYS_CMD_REPORTLINE + content.size());
 					s.setLength(0);
+					sw = 0;
 					continue;
 				}
-				s.append((char)c);
+//				s.append((char)c);
+				cw = font.charWidth((char)c);
+/*
 				if (Config.INSTANCE.getFont().stringWidth(s.toString()) > width) {
 					s.deleteCharAt(s.length() - 1);
 					content.addElement(s.toString());
@@ -82,6 +90,16 @@ public class ThreadLoadAndInit extends Thread {
 					s.setLength(0);
 					s.append((char)c);
 				}
+*/
+				if (sw + cw > width) {
+					content.addElement(s.toString());
+					Config.INSTANCE.application.systemCommand(Config.SYS_CMD_REPORTLINE + content.size());
+					s.setLength(0);
+					sw = 0;
+				}
+				s.append((char)c);
+				sw += cw;
+
 			}
 			content.addElement(s.toString());
 			ti = System.currentTimeMillis() - ti;	// 计时结束
@@ -106,12 +124,12 @@ public class ThreadLoadAndInit extends Thread {
 				}
 			}
 			if (is != null) {
-				try {
-					is.close();
-					is = null;
-				} catch (IOException e) {
-					System.out.println("关闭InputStream时出错");
-				}
+//				try {
+//					is.close();
+				is = null;
+//				} catch (IOException e) {
+//					System.out.println("关闭InputStream时出错");
+//				}
 			}
 		}
 	}
