@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eclipsemeMetadata jad="walkbook.jad" version="1.6.1">
-   <device group="J2ME Wireless Toolkit 2.2" name="DefaultColorPhone"/>
+<eclipsemeMetadata jad="walkbook.jad" version="1.5.5">
+   <device group="Prototype 4.0 S40 (128x128) MIDP Emulator" name="Prototype_4_0_S40_128x128_MIDP_Emulator"/>
    <signing signProject="false"/>
 </eclipsemeMetadata>
