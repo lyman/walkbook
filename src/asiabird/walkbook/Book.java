@@ -83,15 +83,17 @@ public class Book {
 						}
 						if (c == 10) {
 							// 只在 0x0a 时换行（DOS:0d0a; UNIX: 0a）
+							// TODO
+							s.setLength(0);
 							sw = 0;
 							lineNum++;
-							// TODO
 						}
 						cw = config.font.charWidth((char)c);
 						if (sw +  cw> width) {
+							// TODO
+							s.setLength(0);
 							sw = 0;
 							lineNum++;
-							// TODO
 						}
 						s.append((char)c);
 						sw += cw;
