@@ -1,5 +1,6 @@
 #labels Featured
-#story
+#关于walkbook的前世今生
 
 == walkbook最早发布的若干论坛 ==
 [http://www.wda.com.cn/viewthread.php?tid=215538&extra=page%3D1%26amp%3Bfilter%3Dtype%26amp%3Btypeid%3D18 WDA智能手机中文网]
+[http://www.cnjm.net/cgi-bin/lbcjm/topic.cgi?forum=7&topic=3015&changemode=1 中国Java手机网]
